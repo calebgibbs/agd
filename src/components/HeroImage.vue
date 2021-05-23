@@ -6,6 +6,9 @@
 
 <style lang="scss" scoped>
 div { 
-  width: 100%;
+  width: 100%; 
+  img { 
+    width: 100%;
+  }
 }
 </style>
