@@ -5,7 +5,8 @@
     <div class="cards">
       <About/>
       <Why/>
-    </div>
+    </div> 
+    <Contact/>
   </div>
 </template>
 
@@ -14,12 +15,14 @@
   import Services from '../components/HomeServices' 
   import About from '../components/AboutUs'
   import Why from '../components/WhyUs'
+  import Contact from '../components/ContactForm'
   export default {
     components: {
       HeroImage, 
       Services, 
       About, 
-      Why
+      Why, 
+      Contact
     }
   }
 </script>
