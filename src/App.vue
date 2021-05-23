@@ -2,7 +2,6 @@
   <div class="app"> 
     <Navigation/>
     <router-view/>  
-    Hello
   </div>
 </template>
 
