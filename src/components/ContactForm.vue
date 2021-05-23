@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form>
+    <form name="contact" id="form" class="send" @submit.prevent="submitForm">
       <div>
         <input name="name" type="text" placeholder="Name" v-model="name" required> 
       </div>
@@ -14,7 +14,7 @@
         <textarea name="message" cols="30" rows="10" placeholder="Message" v-model="message" required></textarea> 
       </div> 
       <div>
-        <button @click="validateForm">Send</button>
+        <button @click="validateForm" type="submit">Send</button>
       </div>
       <div class="errors">
       <ul>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+  import emailjs from 'emailjs-com'
   const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/ 
   const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -68,6 +69,19 @@
         if(this.errors) {
           e.preventDefault()
         }
+      }, 
+     submitForm(e) {   
+       console.log('submit form')    
+        emailjs.sendForm('service_tjyo04u', 'template_zmypudc', e.target, 'user_cXVYnoDAnK7U0qBsC9viA') 
+        //remove text and add the loader  
+        .then((result) => {
+            console.log('SUCCESS!', result.status, result.text) 
+            //add sending class   
+            document.getElementById()
+            //remove loader 
+        }, (error) => {
+            console.log('FAILED...', error)  
+        }) 
       }
     }
   }
@@ -135,5 +149,37 @@ button {
     margin: 0; 
     padding: 0;
   }
-}
+} 
+
+.show { 
+  display: block;
+} 
+
+.hide {
+  display: none;
+} 
+
+.send { 
+  animation: sendForm 2s ease-out;
+} 
+
+@keyframes sendForm { 
+  0% {
+    transform: scale(0.8);
+  } 
+  50% {
+    transform: translateX(100%); 
+  }  
+  55% { 
+    opacity: 0; 
+    transform: translateX(0);
+  }  
+  70% {
+    opacity: .5; 
+  }
+  100% {
+    opacity: 1;
+  }
+} 
+
 </style>
