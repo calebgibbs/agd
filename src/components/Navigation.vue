@@ -126,6 +126,10 @@ a {
 
 @include mobile-portait {
   @include mobile-menu();
+} 
+
+@include mobile-landscape {
+  @include mobile-menu();
 }
 
 </style>
